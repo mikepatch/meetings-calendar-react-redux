@@ -4,48 +4,21 @@ import { connect } from "react-redux";
 import CalendarList from "./CalendarList";
 import CalendarForm from "./CalendarForm";
 import actions from "../../features/calendar/actions";
+import DB_API from "../../common/providers/DB_API";
 
 class Calendar extends React.Component {
-  apiUrl = "http://localhost:3005/meetings";
+  DB = new DB_API();
 
   loadMeetingsFromApi() {
-    fetch(this.apiUrl)
-      .then((resp) => {
-        if (resp.ok) {
-          return resp.json();
-        }
-
-        throw new Error("Network error!");
-      })
-      .then((resp) => {
-        this.props.loadMeetings(resp);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    this.DB.load()
+      .then((meetings) => this.props.loadMeetings(meetings))
+      .catch((error) => console.error(error));
   }
 
   sendMeetingToApi = (meetingData) => {
-    fetch(this.apiUrl, {
-      method: "POST",
-      body: JSON.stringify(meetingData),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((resp) => {
-        if (resp.ok) {
-          return resp.json();
-        }
-
-        throw new Error("Network error!");
-      })
-      .then((meetingData) => {
-        this.props.saveMeeting(meetingData);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    this.DB.add(meetingData)
+      .then((meetingData) => this.props.saveMeeting(meetingData))
+      .catch((error) => console.error(error));
   };
 
   componentDidMount() {
