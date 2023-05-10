@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack serve --mode development --open"
+    "start": "webpack serve --mode development --open",
+    "db": "json-server --watch ./db/data.json --port 3005"
   },
   "keywords": [],
   "author": "",
