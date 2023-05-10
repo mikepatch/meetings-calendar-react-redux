@@ -1,0 +1,7 @@
+const LOAD_MEETINGS = "LOAD_MEETINGS";
+const SAVE_MEETING = "SAVE_MEETING";
+
+export default {
+  LOAD_MEETINGS,
+  SAVE_MEETING,
+};

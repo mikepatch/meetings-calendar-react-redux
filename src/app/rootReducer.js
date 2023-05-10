@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import meetingsReducer from "../features/meetings";
+import calendarReducer from "../features/calendar";
 
 const rootReducer = combineReducers({
-  meetings: meetingsReducer,
+  meetings: calendarReducer,
 });
 
 export default rootReducer;

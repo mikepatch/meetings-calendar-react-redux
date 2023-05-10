@@ -12,7 +12,7 @@ class CalendarList extends React.Component {
   renderMeetingsItem(itemData) {
     return (
       <li key={itemData.id}>
-        {itemData.date} {itemData.time} =>
+        {itemData.date} {itemData.time} {"=>"}
         <a href={`mailto: ${itemData.email}`}>
           {itemData.firstName} {itemData.lastName}
         </a>
