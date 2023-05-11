@@ -1,6 +1,7 @@
 import React, { useReducer, useState } from "react";
 import { useDispatch } from "react-redux";
 
+import DB_API from "../../common/providers/DB_API";
 import formFields from "../../common/data/formFields.json";
 import FormValidator from "../../common/utilities/FormValidator";
 import {
@@ -10,7 +11,7 @@ import {
   getInitialInputs,
 } from "../../common/utilities/helpers";
 import actions from "../../features/calendar/actions";
-import DB_API from "../../common/providers/DB_API";
+import Wrapper from "../../common/components/Wrapper";
 import Form from "../../common/components/Form";
 import { Button } from "../../common/components/Button";
 import Title from "../../common/components/Title";
@@ -67,16 +68,28 @@ function CalendarForm() {
     });
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Title style={{ marginBottom: "var(--space-md)" }} variant="h2">
-        Nowe spotkanie
-      </Title>
-      {renderFormFields()}
-      <Form.FormField style={{ marginTop: "var(--space-md)" }} align="">
-        <Button type="submit">Zapisz</Button>
-      </Form.FormField>
-    </Form>
+    <Wrapper as="aside" style={wrapperStyles} variant="neumorphic">
+      <Form onSubmit={handleSubmit}>
+        <Title style={formTitleStyles} variant="h3">
+          Nowe spotkanie
+        </Title>
+        {renderFormFields()}
+        <Form.FormField style={formButtonFieldStyles} align="">
+          <Button type="submit">Zapisz</Button>
+        </Form.FormField>
+      </Form>
+    </Wrapper>
   );
 }
+
+const wrapperStyles = {
+  alignItems: "center",
+  display: "flex",
+  left: "0",
+  position: "sticky",
+  top: "var(--space-lg)",
+};
+const formTitleStyles = { marginBottom: "var(--space-md)" };
+const formButtonFieldStyles = { marginTop: "var(--space-md)" };
 
 export default CalendarForm;

@@ -5,6 +5,7 @@ import DB_API from "../../common/providers/DB_API";
 import actions from "../../features/calendar/actions";
 import List from "../../common/components/List";
 import Title from "../../common/components/Title";
+import CalendarItem from "./CalendarItem";
 
 const DB = new DB_API();
 
@@ -21,41 +22,28 @@ function CalendarList() {
     loadMeetingsFromApi();
   }, []);
 
-  const renderMeetingItem = ({
-    id,
-    date,
-    time,
-    email,
-    firstName,
-    lastName,
-  }) => {
-    return (
-      <List.Item key={id}>
-        <Title variant="h4">
-          {date} {time}
-        </Title>
-        <p>
-          Spotkanie z{" "}
-          <a href={`mailto: ${email}`}>
-            {firstName} {lastName}
-          </a>
-        </p>
-      </List.Item>
-    );
+  const getMeetingItem = (data) => {
+    const { id } = data;
+
+    return <CalendarItem key={id} data={data} />;
   };
 
-  const renderMeetingsList = () =>
-    meetings.map((item) => renderMeetingItem(item));
+  const renderMeetingsList = () => (
+    <List>{meetings.map((item) => getMeetingItem(item))}</List>
+  );
 
   const renderNoMeetingsInfo = () => (
-    <Title variant="h3">Brak nadchodzących spotkań</Title>
+    <p style={noMeetingsInfoStyles}>Brak nadchodzących spotkań</p>
   );
 
   return (
-    <List>
+    <section>
+      <Title variant="h2">Nadchodzące spotkania</Title>
       {meetings.length > 0 ? renderMeetingsList() : renderNoMeetingsInfo()}
-    </List>
+    </section>
   );
 }
+
+const noMeetingsInfoStyles = { marginTop: "var(--space-lg)" };
 
 export default CalendarList;
