@@ -1,0 +1,52 @@
+[
+    {
+        "label": "Data",
+        "name": "date",
+        "id": "date",
+        "type": "date",
+        "placeholder": "RRRR-MM-DD",
+        "required": true,
+        "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+        "errorMessage": "Podałeś niepoprawną datę!"
+    },
+    {
+        "label": "Godzina",
+        "name": "time",
+        "id": "time",
+        "type": "time",
+        "placeholder": "HH:MM",
+        "required": true,
+        "pattern": "^[0-9]{2}:[0-9]{2}$",
+        "errorMessage": "Podałeś niepoprawną godzinę!"
+    },
+    {
+        "label": "Imię",
+        "name": "firstName",
+        "id": "firstName",
+        "type": "text",
+        "placeholder": "Wprowadź imię",
+        "required": true,
+        "pattern": null,
+        "errorMessage": null
+    },
+    {
+        "label": "Nazwisko",
+        "name": "lastName",
+        "id": "lastName",
+        "type": "text",
+        "placeholder": "Wprowadź nazwisko",
+        "required": true,
+        "pattern": null,
+        "errorMessage": null
+    },
+    {
+        "label": "Email",
+        "name": "email",
+        "id": "email",
+        "type": "email",
+        "placeholder": "nazwa@poczty.pl",
+        "required": true,
+        "pattern": "^[0-9a-zA-Z_.-]+@[0-9a-zA-Z.-]+\\.[a-zA-Z]{2,3}$",
+        "errorMessage": "Podałeś niepoprawny adres email!"
+    }
+]
