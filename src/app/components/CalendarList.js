@@ -12,13 +12,13 @@ function CalendarList() {
   const meetings = useSelector(({ calendar }) => calendar.meetings);
   const dispatch = useDispatch();
 
-  const loadMeetings = () =>
+  const loadMeetingsFromApi = () =>
     DB.load()
       .then((meetings) => dispatch(actions.loadMeetings(meetings)))
       .catch((error) => console.error(error));
 
   useEffect(() => {
-    loadMeetings();
+    loadMeetingsFromApi();
   }, []);
 
   const renderMeetingItem = ({

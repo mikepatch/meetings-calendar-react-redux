@@ -6,7 +6,7 @@ import CalendarList from "./CalendarList";
 
 function Calendar() {
   return (
-    <Wrapper style={globalWrapperStyles}>
+    <Wrapper variant="neumorphic" style={globalWrapperStyles}>
       <aside>
         <Wrapper style={asideWrapperStyles} variant="neumorphic">
           <CalendarForm />
@@ -20,16 +20,19 @@ function Calendar() {
 }
 
 const globalWrapperStyles = {
+  boxSizing: "border-box",
   display: "grid",
   gridTemplateColumns: "auto 1fr",
+  margin: "var(--space-lg) auto",
+  maxWidth: "1280px",
+  position: "relative",
 };
 const asideWrapperStyles = {
   alignItems: "center",
   display: "flex",
-  height: "100vh",
   left: "0",
   position: "sticky",
-  top: "0",
+  top: "var(--space-lg)",
 };
 
 export default Calendar;
