@@ -12,7 +12,6 @@ import {
 import actions from "../../features/calendar/actions";
 import DB_API from "../../common/providers/DB_API";
 import Form from "../../common/components/Form";
-import Wrapper from "../../common/components/Wrapper";
 import { Button } from "../../common/components/Button";
 import Title from "../../common/components/Title";
 
@@ -67,9 +66,7 @@ function CalendarForm() {
     });
 
   return (
-    // <Wrapper style={{ width: "450px", margin: "0 auto" }}>
-    <Form      onSubmit={handleSubmit}
-    >
+    <Form onSubmit={handleSubmit}>
       <Title style={{ marginBottom: "var(--space-md)" }} variant="h2">
         Nowe spotkanie
       </Title>
@@ -78,7 +75,6 @@ function CalendarForm() {
         <Button type="submit">Zapisz</Button>
       </Form.FormField>
     </Form>
-    // </Wrapper>
   );
 }
 
