@@ -7,14 +7,15 @@ const calendarReducer = (state = initState, action) => {
     case types.LOAD_MEETINGS:
       return {
         ...state,
-        meetings: action.meetings,
+        meetings: action.payload,
       };
 
     case types.SAVE_MEETING:
       return {
         ...state,
-        meetings: [...state.meetings, action.meeting],
+        meetings: [...state.meetings, action.payload],
       };
+
     default:
       return state;
   }

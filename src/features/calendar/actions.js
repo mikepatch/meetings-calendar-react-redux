@@ -2,12 +2,12 @@ import types from "./types";
 
 const loadMeetings = (meetings) => ({
   type: types.LOAD_MEETINGS,
-  meetings,
+  payload: meetings,
 });
 
 const saveMeeting = (meeting) => ({
   type: types.SAVE_MEETING,
-  meeting,
+  payload: meeting,
 });
 
 export default {
