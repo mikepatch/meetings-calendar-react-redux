@@ -4,15 +4,12 @@ import PropTypes from "prop-types";
 import FormField from "./FormField";
 import TextInput from "./TextInput";
 import StyledForm from "../styled/Form.styled";
-import Wrapper from "../../Wrapper";
 
 function Form({ style = {}, children, onSubmit }) {
   return (
-    <Wrapper variant="neumorphic">
-      <StyledForm style={style} noValidate onSubmit={onSubmit}>
-        {children}
-      </StyledForm>
-    </Wrapper>
+    <StyledForm style={style} noValidate onSubmit={onSubmit}>
+      {children}
+    </StyledForm>
   );
 }
 

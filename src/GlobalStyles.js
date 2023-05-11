@@ -58,15 +58,6 @@ input, textarea, button {
     font-family: inherit;
     font-size: var(--font-sm);
 }
-
-#root{
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    height:100vh;
-    gap: var(--space-md);
-    justify-content: center;
-}
 `;
 
 export default GlobalStyles;

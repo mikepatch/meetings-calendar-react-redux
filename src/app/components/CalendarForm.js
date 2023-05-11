@@ -67,17 +67,18 @@ function CalendarForm() {
     });
 
   return (
-    <Wrapper style={{ width: "450px", margin: "0 auto" }}>
-      <Form onSubmit={handleSubmit}>
-        <Title style={{ marginBottom: "var(--space-md)" }} variant="h2">
-          Nowe spotkanie
-        </Title>
-        {renderFormFields()}
-        <Form.FormField style={{ marginTop: "var(--space-md)" }} align="">
-          <Button type="submit">Zapisz</Button>
-        </Form.FormField>
-      </Form>
-    </Wrapper>
+    // <Wrapper style={{ width: "450px", margin: "0 auto" }}>
+    <Form      onSubmit={handleSubmit}
+    >
+      <Title style={{ marginBottom: "var(--space-md)" }} variant="h2">
+        Nowe spotkanie
+      </Title>
+      {renderFormFields()}
+      <Form.FormField style={{ marginTop: "var(--space-md)" }} align="">
+        <Button type="submit">Zapisz</Button>
+      </Form.FormField>
+    </Form>
+    // </Wrapper>
   );
 }
 
