@@ -1,25 +1,31 @@
 import React from "react";
 
-class CalendarList extends React.Component {
-  render() {
-    return <ul>{ this.renderMeetingsList()}</ul>
-  
-  }
-
-  renderMeetingsList() {
-    return this.props.meetings.length > 0 && this.props.meetings.map((item) => this.renderMeetingsItem(item));
-  }
-
-  renderMeetingsItem(itemData) {
+function CalendarList({ meetings }) {
+  const renderMeetingsItem = ({
+    id,
+    date,
+    time,
+    email,
+    firstName,
+    lastName,
+  }) => {
     return (
-      <li key={itemData.id}>
-        {itemData.date} {itemData.time} {"=>"}
-        <a href={`mailto: ${itemData.email}`}>
-          {itemData.firstName} {itemData.lastName}
+      <li key={id}>
+        {date} {time} {"=>"}
+        <a href={`mailto: ${email}`}>
+          {firstName} {lastName}
         </a>
       </li>
     );
-  }
+  };
+
+  const renderMeetingsList = () => {
+    return (
+      meetings.length > 0 && meetings.map((item) => renderMeetingsItem(item))
+    );
+  };
+
+  return <ul>{renderMeetingsList()}</ul>;
 }
 
 export default CalendarList;
