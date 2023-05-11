@@ -11,6 +11,10 @@ import {
 } from "../../common/utilities/helpers";
 import actions from "../../features/calendar/actions";
 import DB_API from "../../common/providers/DB_API";
+import Form from "../../common/components/Form";
+import Wrapper from "../../common/components/Wrapper";
+import { Button } from "../../common/components/Button";
+import Title from "../../common/components/Title";
 
 const formValidator = new FormValidator();
 const DB = new DB_API();
@@ -49,30 +53,31 @@ function CalendarForm() {
   };
 
   const renderFormFields = () =>
-    formFields.map(({ label, name, id, type, placeholder }) => (
-      <div key={id}>
-        <label htmlFor={id}>
-          {label}:{" "}
-          <input
-            id={id}
-            name={name}
-            type={type}
-            placeholder={placeholder}
-            value={inputValues[name]}
-            onChange={(e) => dispatchInputValues(e.target)}
-          />
-        </label>
-        {formErrors[name] && <small>{formErrors[name]}</small>}
-      </div>
-    ));
+    formFields.map((field) => {
+      const { id, name } = field;
+      return (
+        <Form.TextInput
+          key={id}
+          settings={field}
+          errorMessages={formErrors[name] && formErrors[name]}
+          value={inputValues[name]}
+          onChange={dispatchInputValues}
+        />
+      );
+    });
 
   return (
-    <form action="" noValidate onSubmit={handleSubmit}>
-      {renderFormFields()}
-      <div>
-        <input type="submit" value="zapisz" />
-      </div>
-    </form>
+    <Wrapper style={{ width: "450px", margin: "0 auto" }}>
+      <Form onSubmit={handleSubmit}>
+        <Title style={{ marginBottom: "var(--space-md)" }} variant="h2">
+          Nowe spotkanie
+        </Title>
+        {renderFormFields()}
+        <Form.FormField style={{ marginTop: "var(--space-md)" }} align="">
+          <Button type="submit">Zapisz</Button>
+        </Form.FormField>
+      </Form>
+    </Wrapper>
   );
 }
 

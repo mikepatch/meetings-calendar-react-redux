@@ -17,7 +17,7 @@ class FormValidator {
     const { required, pattern, errorMessage } = field;
 
     if (required) {
-      if (inputValue.length === 0) errors.push(`This field is required.`);
+      if (inputValue.length === 0) errors.push(`Pole jest wymagane.`);
     }
 
     if (required && inputValue === false) {
