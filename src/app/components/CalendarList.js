@@ -2,11 +2,12 @@ import React from "react";
 
 class CalendarList extends React.Component {
   render() {
-    return <ul>{this.renderMeetingsList()}</ul>;
+    return <ul>{ this.renderMeetingsList()}</ul>
+  
   }
 
   renderMeetingsList() {
-    return this.props.meetings.map((item) => this.renderMeetingsItem(item));
+    return this.props.meetings.length > 0 && this.props.meetings.map((item) => this.renderMeetingsItem(item));
   }
 
   renderMeetingsItem(itemData) {
