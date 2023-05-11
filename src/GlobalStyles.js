@@ -34,7 +34,7 @@ html {
     /* Spaces */
     --space-sm: .3rem;
     --space-md: .8rem;
-    --space-lg: 2.2rem;
+    --space-lg: 1.2rem;
 
     /* Sizes */
     --min-tap-target-height: 48px;

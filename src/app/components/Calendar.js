@@ -21,7 +21,7 @@ function Calendar() {
 
 const globalWrapperStyles = {
   display: "grid",
-  gridTemplateColumns: "400px repeat(auto-fill, minmax(200px, 1fr))",
+  gridTemplateColumns: "auto 1fr",
 };
 const asideWrapperStyles = {
   alignItems: "center",

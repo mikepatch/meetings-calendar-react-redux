@@ -54,6 +54,7 @@ function CalendarForm() {
   const renderFormFields = () =>
     formFields.map((field) => {
       const { id, name } = field;
+
       return (
         <Form.TextInput
           key={id}
