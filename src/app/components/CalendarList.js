@@ -1,20 +1,18 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import DB_API from "../../common/providers/DB_API";
+import { loadFromApi } from "../../common/providers/DB_API";
 import actions from "../../features/calendar/actions";
 import List from "../../common/components/List";
 import Title from "../../common/components/Title";
 import CalendarItem from "./CalendarItem";
-
-const DB = new DB_API();
 
 function CalendarList() {
   const meetings = useSelector(({ calendar }) => calendar.meetings);
   const dispatch = useDispatch();
 
   const loadMeetingsFromApi = () =>
-    DB.load()
+    loadFromApi()
       .then((meetings) => dispatch(actions.loadMeetings(meetings)))
       .catch((error) => console.error(error));
 

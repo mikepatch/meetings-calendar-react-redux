@@ -1,7 +1,6 @@
 import React, { useReducer, useState } from "react";
 import { useDispatch } from "react-redux";
 
-import DB_API from "../../common/providers/DB_API";
 import formFields from "../../common/data/formFields.json";
 import {
   areFormErrorsEmpty,
@@ -9,14 +8,13 @@ import {
   getFormData,
   getInitialInputs,
 } from "../../common/utilities/helpers";
+import { validateFields } from "../../common/utilities/formValidation";
+import { addToApi } from "../../common/providers/DB_API";
 import actions from "../../features/calendar/actions";
 import Wrapper from "../../common/components/Wrapper";
 import Form from "../../common/components/Form";
 import { Button } from "../../common/components/Button";
 import Title from "../../common/components/Title";
-import { validateFields } from "../../common/utilities/formValidation";
-
-const DB = new DB_API();
 
 function CalendarForm() {
   const dispatch = useDispatch();
@@ -33,7 +31,7 @@ function CalendarForm() {
   );
 
   const addMeetingToApi = (meetingData) => {
-    DB.add(meetingData)
+    addToApi(meetingData)
       .then((newMeeting) => dispatch(actions.saveMeeting(newMeeting)))
       .catch((error) => console.error(error));
   };

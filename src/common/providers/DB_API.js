@@ -1,26 +1,20 @@
-class DB_API {
-  constructor() {
-    this.rootURL = "http://localhost:3005/meetings";
-  }
+const rootURL = "http://localhost:3005/meetings";
 
-  load = () => this._fetch();
+const _fetch = (options = { method: "GET" }) =>
+  fetch(rootURL, options).then((response) => {
+    if (response.ok) return response.json();
 
-  add = (data) => {
-    const options = {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: { "Content-Type": "application/json" },
-    };
+    throw new Error("Network error!");
+  });
 
-    return this._fetch(options);
+export const loadFromApi = () => _fetch();
+
+export const addToApi = (data) => {
+  const options = {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: { "Content-Type": "application/json" },
   };
 
-  _fetch = (options = { method: "GET" }) =>
-    fetch(this.rootURL, options).then((response) => {
-      if (response.ok) return response.json();
-
-      throw new Error("Network error!");
-    });
-}
-
-export default DB_API;
+  return _fetch(options);
+};
