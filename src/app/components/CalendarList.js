@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { loadFromApi } from "../../common/providers/DB_API";
+import { loadFromApi, removeFromApi } from "../../common/providers/DB_API";
 import actions from "../../features/calendar/actions";
 import List from "../../common/components/List";
 import Title from "../../common/components/Title";
@@ -20,10 +20,15 @@ function CalendarList() {
     loadMeetingsFromApi();
   }, []);
 
+  const handleRemoveMeeting = (id) =>
+    removeFromApi(id).then(() => loadMeetingsFromApi());
+
   const getMeetingItem = (data) => {
     const { id } = data;
 
-    return <CalendarItem key={id} data={data} />;
+    return (
+      <CalendarItem key={id} data={data} handleRemove={handleRemoveMeeting} />
+    );
   };
 
   const renderMeetingsList = () => (
