@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 
 import DB_API from "../../common/providers/DB_API";
 import formFields from "../../common/data/formFields.json";
-import FormValidator from "../../common/utilities/FormValidator";
 import {
   areFormErrorsEmpty,
   clearInputs,
@@ -15,8 +14,8 @@ import Wrapper from "../../common/components/Wrapper";
 import Form from "../../common/components/Form";
 import { Button } from "../../common/components/Button";
 import Title from "../../common/components/Title";
+import { validateFields } from "../../common/utilities/formValidation";
 
-const formValidator = new FormValidator();
 const DB = new DB_API();
 
 function CalendarForm() {
@@ -41,7 +40,7 @@ function CalendarForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const errors = formValidator.validate(formFields, inputValues);
+    const errors = validateFields(formFields, inputValues);
 
     if (areFormErrorsEmpty(errors)) {
       const formData = getFormData(formFields, inputValues);
