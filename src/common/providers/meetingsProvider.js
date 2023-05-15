@@ -10,9 +10,9 @@ const _fetch = (options = { method: "GET" }, additionalPath = "") => {
   });
 };
 
-export const loadFromApi = () => _fetch();
+export const load = () => _fetch();
 
-export const addToApi = (data) => {
+export const add = (data) => {
   const options = {
     method: "POST",
     body: JSON.stringify(data),
@@ -22,4 +22,4 @@ export const addToApi = (data) => {
   return _fetch(options);
 };
 
-export const removeFromApi = (id) => _fetch({ method: "DELETE" }, `/${id}`);
+export const remove = (id) => _fetch({ method: "DELETE" }, `/${id}`);

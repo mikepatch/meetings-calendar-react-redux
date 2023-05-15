@@ -9,7 +9,7 @@ import {
   getInitialInputs,
 } from "../../common/utilities/helpers";
 import { validateFields } from "../../common/utilities/formValidation";
-import { addToApi } from "../../common/providers/DB_API";
+import { add } from "../../common/providers/meetingsProvider";
 import actions from "../../features/calendar/actions";
 import Wrapper from "../../common/components/Wrapper";
 import Form from "../../common/components/Form";
@@ -31,7 +31,7 @@ function CalendarForm() {
   );
 
   const addMeetingToApi = (meetingData) => {
-    addToApi(meetingData)
+    add(meetingData)
       .then((newMeeting) => dispatch(actions.saveMeeting(newMeeting)))
       .catch((error) => console.error(error));
   };

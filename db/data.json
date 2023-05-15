@@ -7,14 +7,6 @@
       "email": "jan@kowalski.not",
       "date": "2022-01-01",
       "time": "10:00"
-    },
-    {
-      "date": "2023-05-13",
-      "time": "09:14",
-      "firstName": "Test",
-      "lastName": "Test",
-      "email": "TestUser@gmail.com",
-      "id": 2
     }
   ]
 }

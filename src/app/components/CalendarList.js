@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { loadFromApi, removeFromApi } from "../../common/providers/DB_API";
+import { load, remove } from "../../common/providers/meetingsProvider";
 import actions from "../../features/calendar/actions";
 import List from "../../common/components/List";
 import Title from "../../common/components/Title";
@@ -12,16 +12,20 @@ function CalendarList() {
   const dispatch = useDispatch();
 
   const loadMeetingsFromApi = () =>
-    loadFromApi()
+    load()
       .then((meetings) => dispatch(actions.loadMeetings(meetings)))
+      .catch((error) => console.error(error));
+
+  const removeMeetingFromApi = (id) =>
+    remove(id)
+      .then(() => loadMeetingsFromApi())
       .catch((error) => console.error(error));
 
   useEffect(() => {
     loadMeetingsFromApi();
   }, []);
 
-  const handleRemoveMeeting = (id) =>
-    removeFromApi(id).then(() => loadMeetingsFromApi());
+  const handleRemoveMeeting = (id) => removeMeetingFromApi(id);
 
   const getMeetingItem = (data) => {
     const { id } = data;
