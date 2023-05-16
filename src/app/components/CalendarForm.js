@@ -30,7 +30,7 @@ function CalendarForm() {
     initialInputs
   );
 
-  const addMeetingToApi = (meetingData) => {
+  const addMeetingByProvider = (meetingData) => {
     add(meetingData)
       .then((newMeeting) => dispatch(actions.saveMeeting(newMeeting)))
       .catch((error) => console.error(error));
@@ -42,7 +42,7 @@ function CalendarForm() {
 
     if (areFormErrorsEmpty(errors)) {
       const formData = getFormData(formFields, inputValues);
-      addMeetingToApi(formData);
+      addMeetingByProvider(formData);
       clearInputs(formFields, dispatchInputValues);
     } else {
       setFormErrors(errors);

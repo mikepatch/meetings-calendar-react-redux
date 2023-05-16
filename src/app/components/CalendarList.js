@@ -11,21 +11,21 @@ function CalendarList() {
   const meetings = useSelector(({ calendar }) => calendar.meetings);
   const dispatch = useDispatch();
 
-  const loadMeetingsFromApi = () =>
+  const loadMeetingsByProvider = () =>
     load()
       .then((meetings) => dispatch(actions.loadMeetings(meetings)))
       .catch((error) => console.error(error));
 
-  const removeMeetingFromApi = (id) =>
+  const removeMeetingByProvider = (id) =>
     remove(id)
-      .then(() => loadMeetingsFromApi())
+      .then(() => loadMeetingsByProvider())
       .catch((error) => console.error(error));
 
   useEffect(() => {
-    loadMeetingsFromApi();
+    loadMeetingsByProvider();
   }, []);
 
-  const handleRemoveMeeting = (id) => removeMeetingFromApi(id);
+  const handleRemoveMeeting = (id) => removeMeetingByProvider(id);
 
   const getMeetingItem = (data) => {
     const { id } = data;
